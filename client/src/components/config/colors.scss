@@ -1,0 +1,96 @@
+$color-map: (
+  'primary': #12263f,
+  'primary-light': rgba(#12263f, 0.8),
+  'primary-lighter': rgba(#12263f, 0.5),
+  'primary-lightest': rgba(#12263f, 0.1),
+
+  'black': #000000,
+  'grey-darker': rgba(#000000, 0.85),
+  'grey-dark': rgba(#000000, 0.7),
+  'grey': rgba(#000000, 0.45),
+  'grey-light': rgba(#000000, 0.2),
+  'grey-lighter': rgba(#000000, 0.1),
+  'grey-lightest': #F9fbfd,
+
+  'white': #FFFFFF,
+  'white-light': rgba(255, 255, 255, 0.85),
+  'white-lighter': rgba(255, 255, 255, 0.5),
+  'white-lightest': rgba(255, 255, 255, 0.1),
+
+  'secondary': #4A90E2,
+  'secondary-light': #95aac9,
+  'secondary-lightest': rgba(#4A90E2, 0.1),
+
+  'red': #F23A5B,
+  'green': #1BD1A6,
+  'blue': #1766F0,
+  'yellow': #fff5cc,
+);
+
+$dark-background-colors: (
+  'primary',
+  'primary-light',
+  'primary-lighter',
+  'secondary',
+  'secondary-light',
+  'black',
+  'grey-darker',
+  'grey-dark',
+  'grey',
+  'red',
+  'blue',
+  'green',
+  'white-lightest',
+);
+
+$default-border-color: #edf2f9;
+
+@function rgba-to-rgb($rgba, $background: 'white') {
+  $rgb-color: rgb(red($rgba), green($rgba), blue($rgba));
+  $background-color: map-get($color-map, $background);
+  @return mix($rgb-color, $background-color, alpha($rgba) * 100%);
+}
+
+@function get-color($name, $opacity: null) {
+  $color: map-get($color-map, $name);
+
+  @if $opacity == null {
+    @return $color;
+  }
+
+  $original-opacity: alpha($color);
+  @if $original-opacity != 1 {
+    @if $opacity == 1 {
+      @return rgba-to-rgb($color);
+    }
+
+    $color: rgb(red($color), green($color), blue($color));
+    @if $opacity != 1 {
+      $opacity: $opacity * $original-opacity;
+    }
+  }
+
+  @return rgba($color, $opacity);
+}
+
+@function get-darken-color($color, $amount) {
+  @if map-has-key($color-map, $color) {
+    $color: get-color($color);
+  }
+
+  @if $color == white {
+    @return $color;
+  }
+
+  $opacity: alpha($color);
+  @if $opacity != 1 {
+    $rgb-color: rgb(red($color), green($color), blue($color));
+    @if $rgb-color == white {
+      @return rgba($rgb-color, $opacity * (100% + $amount) / 100%);
+    }
+
+    $color: mix($rgb-color, #ffffff, $opacity * 100%);
+  }
+
+  @return darken($color, $amount);
+}

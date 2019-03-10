@@ -1,0 +1,9 @@
+module.exports = {
+    artifacts: {
+
+    },
+    addresses: {
+        
+    },
+};
+

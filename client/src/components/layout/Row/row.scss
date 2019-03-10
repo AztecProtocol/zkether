@@ -1,0 +1,17 @@
+@import '../../config/layout';
+
+@mixin responsive-row($size) {
+    @each $key, $spacing in $spacing-map {
+        .row-margin-#{$size}-#{$key} {
+            margin-left: -$spacing;
+            margin-right: -$spacing;
+        }
+    }
+
+    .row-margin-#{$size}-none {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@include responsive-row('m');

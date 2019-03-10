@@ -1,0 +1,78 @@
+@import '../../config/colors';
+@import '../../config/typography';
+@import '../../config/layout';
+
+$icon-size-map: (
+  'xxs': 12px,
+  'xs': 14px,
+  's': 16px,
+  'm': 18px,
+  'l': 24px,
+  'xl': 36px,
+  'xxl': 48px,
+);
+
+$icon-rotate-degrees: (0, 90, 180, 270);
+
+:global(i.cm-icon.material-icons) {
+  font-family: 'Material Icons';
+}
+
+:global(.cm-icon.material-icons) {
+  font-size: inherit;
+  line-height: 1;
+  text-align: center;
+}
+
+@each $color-name, $color in $color-map {
+  .color-#{$color-name} {
+    color: $color;
+  }
+}
+
+@each $name, $color in $default-text-color-map {
+  .color-#{$name} {
+    color: $color;
+  }
+}
+
+@mixin responsive-icon($suffix: '') {
+  @each $key, $size in $icon-size-map {
+    :global(.cm-icon) {
+      &.size-#{$suffix}-#{$key} {
+        width: $size;
+        font-size: $size;
+        line-height: $size;
+      }
+    }
+  }
+}
+
+@include responsive-icon('m');
+
+@each $deg in $icon-rotate-degrees {
+  .rotate-#{$deg} {
+    transform: rotate(#{$deg}deg);
+  }
+}
+
+.flip-horizontal {
+  transform: scaleX(-1);
+}
+
+.flip-vertical {
+  transform: scaleY(-1);
+}
+
+.spin {
+  animation: icon-spin 1s infinite linear;
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
