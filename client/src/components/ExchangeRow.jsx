@@ -23,7 +23,7 @@ const ExchangeRow = ({
               spin={isChangingDaiToZkdai}
             />
           )}
-          text="DAI to zkDai"
+          text="Ether to zkEther"
           onSubmit={!isChangingDaiToZkdai ? onChangeDaiToZkdai : undefined}
           disabled={isChangingZkDaiToDai}
           outlined
@@ -38,7 +38,7 @@ const ExchangeRow = ({
               spin={isChangingZkDaiToDai}
             />
           )}
-          text="zkDai to DAI"
+          text="zkEther to Ether"
           onSubmit={!isChangingZkDaiToDai ? onChangeZkDaiToDai : undefined}
           disabled={isChangingDaiToZkdai}
           outlined

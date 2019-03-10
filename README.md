@@ -1,3 +1,3 @@
-# Zk Token
+# ZkEther
 
-Confidential token implementation using AZTEC. Project created at ETHParis.
+Confidential transfers between Ether and Zero-Knowledge Ether.
