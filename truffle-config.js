@@ -51,9 +51,9 @@ module.exports = {
             network_id: '4',
         },
         xdai: {
-          provider: () => { return new HDWalletProvider(mnemonic, 'https://dai.poa.network'); },
-          gas: 7000000,
-          network_id: 100,
-      },
+            provider: () => { return new HDWalletProvider(process.env.MNEMONIC, 'https://dai.poa.network'); },
+            gas: 7000000,
+            network_id: 100,
+        },
     },
 };

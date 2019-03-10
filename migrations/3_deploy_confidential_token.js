@@ -6,7 +6,7 @@ const Wrapper = artifacts.require('./Wrapper.sol');
 const ConfidentialToken = artifacts.require('./ConfidentialToken.sol');
 
 const XDAI_SIDECHAIN_ID = 100;
-const ERC20_SCALING_FACTOR = new BN('100000000000000000', 10).toString(10);
+const ERC20_SCALING_FACTOR = new BN('1000000000000000', 10).toString(10);
 
 module.exports = (deployer) => {
     // Cannot deploy locally because we need the ACE and the ERC20Mintable
