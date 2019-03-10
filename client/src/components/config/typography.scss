@@ -29,7 +29,7 @@ $font-weight-map: (
 
 $default-text-color: get-color('primary');
 $default-label-color: get-color('secondary-light');
-$default-link-color: get-color('primary-lighter');
+$default-link-color: get-color('secondary');
 
 $default-text-color-map: (
   'text': $default-text-color,

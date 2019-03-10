@@ -16,8 +16,8 @@
 pragma solidity >=0.5.0 <0.6.0;
 
 contract Wrapper {
-    string public name     = "Wrapped Xdai";
-    string public symbol   = "WXDAI";
+    string public name     = "Wrapped Ether";
+    string public symbol   = "WETH";
     uint8  public decimals = 18;
 
     event  Approval(address indexed src, address indexed guy, uint wad);

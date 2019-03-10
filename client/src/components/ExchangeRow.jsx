@@ -1,15 +1,15 @@
 import React from 'react';
-import Row from './layout/Row/Row';
-import Col from './layout/Col/Col';
-import Block from './layout/Block/Block';
-import Icon from './general/Icon/Icon';
-import Button from './general/Button/Button';
+import Row from '../components/layout/Row/Row';
+import Col from '../components/layout/Col/Col';
+import Block from '../components/layout/Block/Block';
+import Icon from '../components/general/Icon/Icon';
+import Button from '../components/general/Button/Button';
 
 const ExchangeRow = ({
-  isChangingXDaiToZkdai,
-  isChangingZkDaiToXdai,
-  onChangeXDaiToZkdai,
-  onChangeZkDaiToXdai,
+  isChangingDaiToZkdai,
+  isChangingZkDaiToDai,
+  onChangeDaiToZkdai,
+  onChangeZkDaiToDai,
 }) => (
   <Block
     padding="l 0"
@@ -19,13 +19,13 @@ const ExchangeRow = ({
         <Button
           icon={(
             <Icon
-              name={isChangingZkDaiToXdai ? 'refresh' : 'arrow_downward'}
-              spin={isChangingZkDaiToXdai}
+              name={isChangingDaiToZkdai ? 'refresh' : 'arrow_upward'}
+              spin={isChangingDaiToZkdai}
             />
           )}
-          text="zkDai to xDAI"
-          onSubmit={!isChangingZkDaiToXdai ? onChangeZkDaiToXdai : undefined}
-          disabled={isChangingXDaiToZkdai}
+          text="DAI to zkDai"
+          onSubmit={!isChangingDaiToZkdai ? onChangeDaiToZkdai : undefined}
+          disabled={isChangingZkDaiToDai}
           outlined
           expand
         />
@@ -34,13 +34,13 @@ const ExchangeRow = ({
         <Button
           icon={(
             <Icon
-              name={isChangingXDaiToZkdai ? 'refresh' : 'arrow_upward'}
-              spin={isChangingXDaiToZkdai}
+              name={isChangingZkDaiToDai ? 'refresh' : 'arrow_downward'}
+              spin={isChangingZkDaiToDai}
             />
           )}
-          text="xDAI to zkDai"
-          onSubmit={!isChangingXDaiToZkdai ? onChangeXDaiToZkdai : undefined}
-          disabled={isChangingZkDaiToXdai}
+          text="zkDai to DAI"
+          onSubmit={!isChangingZkDaiToDai ? onChangeZkDaiToDai : undefined}
+          disabled={isChangingDaiToZkdai}
           outlined
           expand
         />

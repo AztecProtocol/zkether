@@ -1,7 +1,6 @@
 
 module.exports = {
-    100: {
-        ace: '0xa42959d386Fe02557C130919898777ba36dFD1ca',
-        joinSplit: '0x7F0C2bF6844bEBdF0Db3a898D12FDfF616701691',
-    },
+    ace: '0xB09A8c8565398099DBE7CA5688fE09DF05EDacaa',
+    erc20Mintable: '0x6A72AcB3D4fAfa2175D4Cc491c185B676F1EA301',
+    joinSplit: '0x666267C5a149e8076D5CC2e5B223b39f7e638355',
 };

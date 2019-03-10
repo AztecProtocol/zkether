@@ -14,7 +14,7 @@ function createProvider(network) {
     }
     return () => {
         return new HDWalletProvider(
-            process.env.PRIVATE_KEY || process.env.MNEMONIC,
+            process.env.MNEMONIC,
             `https://${network}.infura.io/v3/` + process.env.INFURA_API_KEY
         );
     };
@@ -23,7 +23,7 @@ function createProvider(network) {
 module.exports = {
     compilers: {
         solc: {
-            version: '0.5.5',
+            version: '0.5.4',
             settings: {
                 optimizer: {
                     enabled: true,
@@ -31,10 +31,6 @@ module.exports = {
                 },
             },
         },
-    },
-    mocha: {
-        enableTimeouts: false,
-        reporter: 'spec',
     },
     networks: {
         development: {
@@ -47,13 +43,9 @@ module.exports = {
         rinkeby: {
             provider: createProvider('rinkeby'),
             gas: 4700000,
-            gasPrice: toHex(toWei('10', 'gwei')),
-            network_id: '4',
-        },
-        xdai: {
-            provider: () => { return new HDWalletProvider(process.env.MNEMONIC, 'https://dai.poa.network'); },
-            gas: 7000000,
-            network_id: 100,
-        },
+            gasPrice: toHex(toWei('1', 'gwei')),
+            network_id: 4,
+            skipDryRun: true,
+        }
     },
 };

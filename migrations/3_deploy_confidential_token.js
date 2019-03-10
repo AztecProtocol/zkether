@@ -3,16 +3,16 @@ const BN = require('bn.js');
 const contractAddresses = require('../libs/@aztec/contract-addresses');
 
 const Wrapper = artifacts.require('./Wrapper.sol');
-const ConfidentialToken = artifacts.require('./ConfidentialToken.sol');
+const ZKERC20 = artifacts.require('./ZKERC20.sol');
 
-const XDAI_SIDECHAIN_ID = 100;
-const ERC20_SCALING_FACTOR = new BN('1000000000000000', 10).toString(10);
+const RINKEBY_CHAIN_ID = 4;
+const ERC20_SCALING_FACTOR = new BN('100000000000000000', 10);
 
 module.exports = (deployer) => {
     // Cannot deploy locally because we need the ACE and the ERC20Mintable
     // If you want to do that, go to https://github.com/AztecProtocol/AZTEC/tree/master/packages/protocol
-    if (deployer.network_id !== XDAI_SIDECHAIN_ID) {
-        console.log('This tutorial only works with the xDai sidechain');
+    if (deployer.network_id !== RINKEBY_CHAIN_ID) {
+        console.log('This tutorial only works with the Rinkeby testnet');
         return true;
     }
     if (!Wrapper.address) {
@@ -32,12 +32,12 @@ module.exports = (deployer) => {
     const canConvert = true;
 
     return deployer.deploy(
-        ConfidentialToken,
+        ZKERC20,
         name,
         canMint,
         canBurn,
         canConvert,
-        ERC20_SCALING_FACTOR,
+        ERC20_SCALING_FACTOR.toString(10),
         wrapperAddress,
         aceAddress
     );
